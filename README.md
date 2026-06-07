@@ -2,7 +2,7 @@
 
 # 🛡️ eJPT Cheatsheet
 
-### Guía práctica para la preparación del certificado Junior Penestration Tester
+### Guía práctica para la preparación del certificado Junior Penetration Tester
 
 <p align="center">
   <img src="assets/images/ejpt-cheatsheet-cover.png" alt="Portada eJPT Cheatsheet" width="850">
