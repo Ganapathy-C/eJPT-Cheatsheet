@@ -38,7 +38,7 @@ Antes de empezar, define cómo vas a trabajar para no perderte durante el examen
 ```bash
 exam-ejpt/
 ├── README.md
-├── EXAM_TEMPLATE.md
+├── EJPT_EXAM_TEMPLATE.md
 ├── scans/
 │   ├── host_1/
 │   ├── host_2/

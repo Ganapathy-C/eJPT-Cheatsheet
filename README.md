@@ -32,8 +32,8 @@ Este repositorio contiene una **cheatsheet propia para preparación de eJPT y la
 ## 📚 Recursos del repositorio
 
 - [Cheatsheet principal](README.md): guía rápida de comandos, metodología y técnicas para laboratorios de eJPT.
-- [Plantilla de documentación](TEMPLATE.md): estructura profesional para documentar máquinas, CTFs y laboratorios de estudio.
-- [Plantilla para examen eJPT](EXAM_TEMPLATE.md): estructura para organizar hosts, evidencias, credenciales, pivoting y respuestas durante simulacros o laboratorios tipo examen.
+- [Plantilla de documentación](LAB_TEMPLATE.md): estructura profesional para documentar máquinas, CTFs y laboratorios de estudio.
+- [Plantilla para examen eJPT](EJPT_EXAM_TEMPLATE.md): estructura para organizar hosts, evidencias, credenciales, pivoting y respuestas durante simulacros o laboratorios tipo examen.
 
 ## 🧭 Índice
 
@@ -1340,9 +1340,9 @@ WPScan enumera WordPress, plugins, temas y usuarios. Actualizar la base de datos
 
 # 📝 Plantilla de documentación
 
-La plantilla completa para documentar máquinas, CTFs y laboratorios está separada en `TEMPLATE.md` para mantener el README como cheatsheet principal.
+La plantilla completa para documentar máquinas, CTFs y laboratorios está separada en `LAB_TEMPLATE.md` para mantener el README como cheatsheet principal.
 
-📄 **Archivo:** [`TEMPLATE.md`](TEMPLATE.md)
+📄 **Archivo:** [`LAB_TEMPLATE.md`](LAB_TEMPLATE.md)
 
 Úsala para registrar información general, reconocimiento, enumeración, explotación, escalada de privilegios, evidencias, comandos útiles y lecciones aprendidas.
 
@@ -1362,7 +1362,7 @@ La plantilla completa para documentar máquinas, CTFs y laboratorios está separ
 
 Este repositorio incluye también una plantilla específica para organizar un entorno de examen con varias máquinas, topologías, redes internas, credenciales, evidencias y posibles rutas de pivoting.
 
-📄 **Archivo:** [`EXAM_TEMPLATE.md`](EXAM_TEMPLATE.md)
+📄 **Archivo:** [`EJPT_EXAM_TEMPLATE.md`](EJPT_EXAM_TEMPLATE.md)
 
 Úsala como cuaderno de trabajo durante laboratorios o simulacros de examen para no perder información importante entre hosts.
 
