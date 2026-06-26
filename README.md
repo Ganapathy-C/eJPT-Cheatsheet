@@ -34,6 +34,19 @@ Este repositorio contiene una **cheatsheet propia para preparación de eJPT y la
 - [Cheatsheet principal](README.md): guía rápida de comandos, metodología y técnicas para laboratorios de eJPT.
 - [Plantilla de documentación](LAB_TEMPLATE.md): estructura profesional para documentar máquinas, CTFs y laboratorios de estudio.
 - [Plantilla para examen eJPT](EJPT_EXAM_TEMPLATE.md): estructura para organizar hosts, evidencias, credenciales, pivoting y respuestas durante simulacros o laboratorios tipo examen.
+- [Vídeo sobre mi experiencia en el examen eJPT](https://www.youtube.com/watch?v=31oboDFLCuc): explicación personal sobre la experiencia, preparación y enfoque del examen.
+
+## 🎥 Vídeo: mi experiencia en el examen eJPT
+
+Además de esta cheatsheet, comparto en YouTube mi experiencia personal realizando el examen eJPT, con consejos y puntos importantes para afrontar la preparación con una metodología clara.
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=31oboDFLCuc">
+    <img src="https://img.youtube.com/vi/31oboDFLCuc/maxresdefault.jpg" alt="Vídeo sobre mi experiencia en el examen eJPT" width="850">
+  </a>
+</p>
+
+📺 **Ver vídeo:** [Mi experiencia en el examen eJPT](https://www.youtube.com/watch?v=31oboDFLCuc)
 
 ## 🧭 Índice
 
