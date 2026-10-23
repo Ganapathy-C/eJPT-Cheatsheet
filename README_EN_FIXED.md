@@ -205,7 +205,7 @@ nmap -T4 --min-rate 5000 -p- IP
 | Script results | They can expose misconfigurations, login pages, or SMB resources. |
 | Host state | Up/down detection helps differentiate active hosts from unreachable ones. |
 
-## Ejemplos útiles de escaneo
+## Useful scanning examples
 
 ```bash
 sudo nmap -sn 192.168.1.0/24
@@ -509,7 +509,7 @@ It can provide machine names, workgroups, and useful data for understanding a Wi
 
 Metasploit helps search modules, configure options, validate services, run exploits, and perform post-exploitation in authorized labs.
 
-## Flujo básico de trabajo en Metasploit
+## Basic Metasploit workflow
 
 ```bash
 msfconsole
@@ -562,7 +562,7 @@ vulns
 
 The database allows organizing hosts, services, vulnerabilities, and scan results within Metasploit. Workspaces help separate labs or machines to avoid mixing evidence.
 
-## Módulos auxiliares de escaneo
+## Auxiliary scanning modules
 
 Auxiliary modules do not always exploit. Many times they are used to enumerate, validate credentials, discover information, or confirm the attack surface.
 
@@ -681,7 +681,7 @@ run
 
 Resource scripts automate repetitive Metasploit commands. They are useful for preparing listeners, importing scans, or reusing configurations.
 
-## Meterpreter básico
+## Basic Meterpreter
 
 | Command | Use |
 |---|---|
@@ -704,7 +704,7 @@ Resource scripts automate repetitive Metasploit commands. They are useful for pr
 
 Post-exploitation actions should be limited to authorized labs and the evidence necessary for the exercise.
 
-## Convertir shell a Meterpreter
+## Convert shell to Meterpreter
 
 ```bash
 use post/multi/manage/shell_to_meterpreter
@@ -721,7 +721,7 @@ sessions -u ID
 
 This is useful when you first get a simple shell and want a smoother interaction with Meterpreter.
 
-## Módulos de explotación comunes en laboratorios
+## Common exploitation modules in labs
 
 | Technique / Service | Module | Use |
 |---|---|---|
@@ -736,7 +736,7 @@ This is useful when you first get a simple shell and want a smoother interaction
 
 Use these modules only if the version, operating system, architecture, and lab context match.
 
-## Post-explotación Windows con Metasploit
+## Windows post-exploitation con Metasploit
 
 | Module / Command | Use |
 |---|---|
@@ -758,7 +758,7 @@ Use these modules only if the version, operating system, architecture, and lab c
 
 Credential dumping should only be done in authorized labs with a clear objective and proper documentation of the evidence.
 
-## Bypass UAC e impersonación de tokens
+## UAC bypass and token impersonation
 
 ```bash
 getprivs
@@ -775,7 +775,7 @@ exploit/windows/local/bypassuac_injection
 
 These techniques depend on privileges, architecture, available session, and system context.
 
-## Post-explotación Linux con Metasploit
+## Linux post-exploitation con Metasploit
 
 | Module | Use |
 |---|---|
@@ -788,7 +788,7 @@ These techniques depend on privileges, architecture, available session, and syst
 | `post/multi/gather/enum_users_history` | Review user history. |
 | `exploit/unix/local/chkrootkit` | Local escalation if the system is vulnerable. |
 
-## Pivoting con Metasploit
+## Pivoting with Metasploit
 
 ```bash
 ipconfig
@@ -893,7 +893,7 @@ portfwd add -l LOCAL_PORT -p REMOTE_PORT -r INTERNAL_IP
 
 
 
-# ⚔️ Explotación web y servicios comunes
+# ⚔️ Web exploitation and common services
 
 This section gathers frequent vectors in eJPT labs. The goal is to know **what to check** and **what evidence to record**, not to launch exploits without criteria.
 
@@ -1019,7 +1019,7 @@ MSFvenom generates payloads for labs. You must adjust the architecture, operatin
 
 
 
-# 🪟 Post-explotación Windows
+# 🪟 Windows post-exploitation
 
 Once a Windows session is obtained, the goal is to understand the user, privileges, system, network, and possible escalation paths.
 
@@ -1056,7 +1056,7 @@ findstr /si password *.txt *.ini *.config *.xml
 cmdkey /list
 ```
 
-## Meterpreter útil
+## Useful Meterpreter
 
 ```text
 getuid
@@ -1118,7 +1118,7 @@ hashdump
 
 
 
-# 🐧 Post-explotación Linux
+# 🐧 Linux post-exploitation
 
 On Linux, local enumeration usually focuses on users, permissions, processes, services, scheduled tasks, and binaries with special permissions.
 
@@ -1187,7 +1187,7 @@ john hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt
 
 
 
-# 🔁 Pivoting y movimiento en red
+# 🔁 Pivoting and movement in the network
 
 Pivoting means using a compromised machine as a support point to reach internal networks that are not directly accessible.
 

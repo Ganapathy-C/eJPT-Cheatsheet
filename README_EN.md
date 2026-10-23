@@ -2,7 +2,7 @@
 
 # 🛡️ eJPT Cheatsheet
 
-### Guía práctica para la preparación del certificado Junior Penetration Tester
+### Practical guide for preparing for the Junior Penetration Tester certification
 
 <p align="center">
   <img src="assets/images/ejpt-cheatsheet-cover.png" alt="eJPT Cheatsheet cover" width="850">
@@ -22,7 +22,7 @@
 
 ---
 
-## 📌 Objetivo del repositorio
+## 📌 Repository objective
 
 This repository contains a **personal cheatsheet for preparing for eJPT and controlled labs**. It is designed for quick consultation during a practice, but without limiting itself to standalone commands: each block explains **what it is for**, **when to use it**, and **what you should look at in the output**.
 
@@ -51,21 +51,21 @@ In addition to this cheatsheet, I share my personal experience taking the eJPT e
 ## 🧭 Índice
 
 - [Metodología de trabajo](#-metodología-de-trabajo)
-- [Reconocimiento pasivo](#-reconocimiento-pasivo)
+- [Passive reconnaissance](#-passive-reconnaissance)
 - [Google Dorking](#-google-dorking)
-- [Descubrimiento y escaneo con Nmap](#-descubrimiento-y-escaneo-con-nmap)
-- [Enumeración por servicio](#-enumeración-por-servicio)
+- [Host discovery and scanning with Nmap](#-host-discovery-and-scanning-with-nmap)
+- [Enumeration by service](#-enumeration-by-service)
 - [Metasploit](#-metasploit)
 - [Explotación web y servicios comunes](#-explotación-web-y-servicios-comunes)
-- [Post-explotación Windows](#-post-explotación-windows)
-- [Post-explotación Linux](#-post-explotación-linux)
-- [Pivoting y movimiento en red](#-pivoting-y-movimiento-en-red)
-- [Utilidades prácticas](#-utilidades-prácticas)
-- [Plantilla de documentación](#-plantilla-de-documentación)
+- [Windows post-exploitation](#-windows-post-exploitation)
+- [Linux post-exploitation](#-linux-post-exploitation)
+- [Pivoting and movement in the network](#-pivoting-and-movement-in-the-network)
+- [Practical utilities](#-practical-utilities)
+- [Documentation template](#-documentation-template)
 
 ---
 
-## 🧠 Metodología de trabajo
+## 🧠 Work methodology
 
 A good pentesting practice is not about firing tools at random. The recommended flow is:
 
@@ -89,7 +89,7 @@ A good pentesting practice is not about firing tools at random. The recommended 
 
 Passive reconnaissance aims to obtain information without interacting aggressively with the target. It helps create a first picture of the exposed surface.
 
-## Comandos base
+## Base commands
 
 | Tool | Command | Practical use |
 |---|---|---|
@@ -101,7 +101,7 @@ Passive reconnaissance aims to obtain information without interacting aggressive
 | `wafw00f` | `wafw00f https://target` | Detect whether a web app is behind a WAF. |
 | `sublist3r` | `sublist3r -d domain.com` | Search for subdomains using public sources. |
 
-## Cómo interpretar resultados
+## How to interpret results
 
 - If `whatweb` detects a CMS, note the technology and version. It may guide later enumeration.
 - If `dnsrecon` shows subdomains or interesting records, test them individually.
@@ -167,7 +167,7 @@ Google Dorking allows you to find indexed information without directly interacti
 | quotes | `"admin login"` | Forces exact matches. |
 | exclusion | `site:domain.com -www` | Removes terms from results. |
 
-## Dorks útiles en laboratorios
+## Useful dorks in labs
 
 ```text
 site:domain.com filetype:pdf
@@ -183,7 +183,7 @@ inurl:config filetype:txt
 
 
 
-# 🔍 Descubrimiento y escaneo con Nmap
+# 🔍 Host discovery and scanning with Nmap
 
 Nmap is the core tool in most eJPT labs. It helps identify active hosts, discover the attack surface, and validate versions before exploitation.
 
@@ -196,7 +196,7 @@ nmap -A -p- IP
 nmap -T4 --min-rate 5000 -p- IP
 ```
 
-## Qué revisar en la salida
+## What to review en la salida
 
 | Item | Why it matters |
 |---|---|
@@ -205,7 +205,7 @@ nmap -T4 --min-rate 5000 -p- IP
 | Script results | They can expose misconfigurations, login pages, or SMB resources. |
 | Host state | Up/down detection helps differentiate active hosts from unreachable ones. |
 
-## Ejemplos útiles de escaneo
+## Useful scanning examples
 
 ```bash
 sudo nmap -sn 192.168.1.0/24
@@ -366,7 +366,7 @@ sudo nmap -p- --open -T4 192.168.1.10 -oN nmap_scan.txt
 </details>
 
 
-# 🧩 Enumeración por servicio
+# 🧩 Enumeration by service
 
 After the scan, each open port should be treated as a lead. Enumeration must adapt to the service.
 
@@ -509,7 +509,7 @@ It can provide machine names, workgroups, and useful data for understanding a Wi
 
 Metasploit helps search modules, configure options, validate services, run exploits, and perform post-exploitation in authorized labs.
 
-## Flujo básico de trabajo en Metasploit
+## Basic Metasploit workflow
 
 ```bash
 msfconsole
@@ -545,7 +545,7 @@ run
 
 Before executing a module, confirm the version, operating system, port, and context using Nmap or another prior enumeration.
 
-## Base de datos y workspaces
+## Database and workspaces
 
 ```bash
 service postgresql start
@@ -562,7 +562,7 @@ vulns
 
 The database allows organizing hosts, services, vulnerabilities, and scan results within Metasploit. Workspaces help separate labs or machines to avoid mixing evidence.
 
-## Módulos auxiliares de escaneo
+## Auxiliary scanning modules
 
 Auxiliary modules do not always exploit. Many times they are used to enumerate, validate credentials, discover information, or confirm the attack surface.
 
@@ -596,7 +596,7 @@ Auxiliary modules do not always exploit. Many times they are used to enumerate, 
 | RDP | `auxiliary/scanner/rdp/rdp_scanner` | Check RDP. |
 | WinRM | `auxiliary/scanner/winrm/winrm_login` | Test WinRM access. |
 
-## Búsqueda de módulos
+## Search modules
 
 ```bash
 search type:auxiliary name:ftp
@@ -609,7 +609,7 @@ search tomcat
 
 Before using a module, review `info`, `show options`, the service version, the target system, and the available target. A module may exist but not apply to the exact version of the lab.
 
-## Payloads y multi/handler
+## Payloads and multi/handler
 
 | Type | Use |
 |---|---|
@@ -681,7 +681,7 @@ run
 
 Resource scripts automate repetitive Metasploit commands. They are useful for preparing listeners, importing scans, or reusing configurations.
 
-## Meterpreter básico
+## Basic Meterpreter
 
 | Command | Use |
 |---|---|
@@ -704,7 +704,7 @@ Resource scripts automate repetitive Metasploit commands. They are useful for pr
 
 Post-exploitation actions should be limited to authorized labs and the evidence necessary for the exercise.
 
-## Convertir shell a Meterpreter
+## Convert shell to Meterpreter
 
 ```bash
 use post/multi/manage/shell_to_meterpreter
@@ -721,7 +721,7 @@ sessions -u ID
 
 This is useful when you first get a simple shell and want a smoother interaction with Meterpreter.
 
-## Módulos de explotación comunes en laboratorios
+## Common exploitation modules in labs
 
 | Technique / Service | Module | Use |
 |---|---|---|
@@ -736,7 +736,7 @@ This is useful when you first get a simple shell and want a smoother interaction
 
 Use these modules only if the version, operating system, architecture, and lab context match.
 
-## Post-explotación Windows con Metasploit
+## Windows post-exploitation con Metasploit
 
 | Module / Command | Use |
 |---|---|
@@ -758,7 +758,7 @@ Use these modules only if the version, operating system, architecture, and lab c
 
 Credential dumping should only be done in authorized labs with a clear objective and proper documentation of the evidence.
 
-## Bypass UAC e impersonación de tokens
+## UAC bypass and token impersonation
 
 ```bash
 getprivs
@@ -775,7 +775,7 @@ exploit/windows/local/bypassuac_injection
 
 These techniques depend on privileges, architecture, available session, and system context.
 
-## Post-explotación Linux con Metasploit
+## Linux post-exploitation con Metasploit
 
 | Module | Use |
 |---|---|
@@ -788,7 +788,7 @@ These techniques depend on privileges, architecture, available session, and syst
 | `post/multi/gather/enum_users_history` | Review user history. |
 | `exploit/unix/local/chkrootkit` | Local escalation if the system is vulnerable. |
 
-## Pivoting con Metasploit
+## Pivoting with Metasploit
 
 ```bash
 ipconfig
@@ -1019,11 +1019,11 @@ MSFvenom generates payloads for labs. You must adjust the architecture, operatin
 
 
 
-# 🪟 Post-explotación Windows
+# 🪟 Windows post-exploitation
 
 Once a Windows session is obtained, the goal is to understand the user, privileges, system, network, and possible escalation paths.
 
-## Enumeración inicial
+## Initial enumeration
 
 ```cmd
 whoami
@@ -1037,7 +1037,7 @@ net localgroup
 net localgroup administrators
 ```
 
-## Qué revisar
+## What to review
 
 | Element | Why it matters |
 |---|---|
@@ -1048,7 +1048,7 @@ net localgroup administrators
 | Sensitive files | Configs, backups, or scripts may contain credentials. |
 | Internal network | It may reveal new machines or accessible segments. |
 
-## Búsqueda de credenciales
+## Searching for credentials
 
 ```cmd
 dir /s /b *password* *cred* *config*
@@ -1056,7 +1056,7 @@ findstr /si password *.txt *.ini *.config *.xml
 cmdkey /list
 ```
 
-## Meterpreter útil
+## Useful Meterpreter
 
 ```text
 getuid
@@ -1118,11 +1118,11 @@ hashdump
 
 
 
-# 🐧 Post-explotación Linux
+# 🐧 Linux post-exploitation
 
 On Linux, local enumeration usually focuses on users, permissions, processes, services, scheduled tasks, and binaries with special permissions.
 
-## Enumeración inicial
+## Initial enumeration
 
 ```bash
 whoami
@@ -1136,7 +1136,7 @@ cat /etc/passwd
 find / -perm -4000 -type f 2>/dev/null
 ```
 
-## Puntos clave
+## Key points
 
 | Review | Command | What to look for |
 |---|---|---|
@@ -1187,7 +1187,7 @@ john hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt
 
 
 
-# 🔁 Pivoting y movimiento en red
+# 🔁 Pivoting and movement in the network
 
 Pivoting means using a compromised machine as a support point to reach internal networks that are not directly accessible.
 
@@ -1200,7 +1200,7 @@ Pivoting means using a compromised machine as a support point to reach internal 
 | SOCKS proxy | Channel tools through a session. |
 | Autoroute | Add routes in Metasploit to reach internal networks. |
 
-## Comandos orientativos en Meterpreter
+## Useful Meterpreter commands
 
 ```text
 ipconfig
@@ -1215,7 +1215,7 @@ Then you can configure tools to pass through the proxy if the lab requires it.
 
 
 
-# 🧰 Utilidades prácticas
+# 🧰 Practical utilities
 
 ## Banner grabbing
 
@@ -1321,7 +1321,7 @@ WPScan enumerates WordPress, plugins, themes, and users. Updating the database i
 
 
 
-# 📝 Plantilla de documentación
+# 📝 Documentation template
 
 The complete template for documenting machines, CTFs, and labs is separated into `LAB_TEMPLATE.md` to keep the README as the main cheatsheet.
 
@@ -1331,7 +1331,7 @@ Use it to record general information, reconnaissance, enumeration, exploitation,
 
 
 
-# ✅ Notas finales
+# ✅ Final notes
 
 - Enumerate before exploiting.
 - Always save relevant output with `-oA`, screenshots, or logs.
@@ -1341,7 +1341,7 @@ Use it to record general information, reconnaissance, enumeration, exploitation,
 
 
 
-## 🧭 Plantilla para examen eJPT
+## 🧭 eJPT exam template
 
 This repository also includes a specific template to organize an exam environment with several machines, topologies, internal networks, credentials, evidence, and possible pivoting routes.
 
@@ -1351,7 +1351,7 @@ Use it as a working notebook during labs or exam simulations so you do not lose 
 
 
 
-# 🧪 Máquinas recomendadas para practicar eJPT
+# 🧪 Recommended machines to practice eJPT
 
 <p align="center">
   <img src="assets/images/writeups-ctf-solutions-cover.png" alt="Writeups and CTF Solutions cover" width="850">
@@ -1374,7 +1374,7 @@ In addition to theory and commands, one of the best ways to prepare for eJPT is 
 | Cap | HackTheBox | Easy | IDOR, traffic analysis, reused credentials, Linux capabilities. | Excellent for practicing evidence analysis, credential reuse, and escalation via capabilities. | [See write-up](https://github.com/saulruizplaza/WriteUps-CTF-Solutions/blob/main/HackTheBox/Facil/Cap/README.md) |
 | Neighbour | TryHackMe | 5 minutes | Credentials in source code, IDOR, parameter manipulation. | Ideal for reinforcing basic web enumeration and simple logical flaws. | [See write-up](https://github.com/saulruizplaza/WriteUps-CTF-Solutions/blob/main/TryHackme/5_minutos/Neighbour/README.md) |
 
-## Ruta recomendada de práctica
+## Recommended practice path
 
 1. FirstHacking
 2. Trust
